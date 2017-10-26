@@ -3,6 +3,16 @@ use ieee.std_logic_1164.all;
 
 package Wallace8_Components is
 
+component mux is
+	
+	port (
+		I0 : IN std_logic;
+		I1 : IN std_logic;
+		sel : IN std_logic;
+		O : OUT std_logic
+	);
+	
+end component;
 component CarrySelectAdder is
 port (
 		A : IN std_logic_vector(10 downto 0);

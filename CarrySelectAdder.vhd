@@ -27,21 +27,19 @@ begin
 
 	SUM(2 downto 0) <= Sum1;
 
+	M1 : mux port map (Sum2_0(3),Sum2_1(3),C1,SUM(6));
+	M2 : mux port map (Sum2_0(2),Sum2_1(2),C1,SUM(5));
+	M3 : mux port map (Sum2_0(1),Sum2_1(1),C1,SUM(4));
+	M4 : mux port map (Sum2_0(0),Sum2_1(0),C1,SUM(3));
+	
+	M5 : mux port map (C2_0,C2_1,C1,C2_3);
 
-	SUM(6) <= (C1 and Sum2_1(3)) or ((not C1) and Sum2_0(3));
-	SUM(5) <= (C1 and Sum2_1(2)) or ((not C1) and Sum2_0(2));
-	SUM(4) <= (C1 and Sum2_1(1)) or ((not C1) and Sum2_0(1));
-	SUM(3) <= (C1 and Sum2_1(0)) or ((not C1) and Sum2_0(0));
-
-
-	C2_3 <= (C1 and C2_1) or ((not C1) and C2_0);
-
-	SUM(10) <= (C2_3 and Sum3_1(3)) or ((not C2_3) and Sum3_0(3));
-	SUM(9) <= (C2_3 and Sum3_1(2)) or ((not C2_3) and Sum3_0(2));
-	SUM(8) <= (C2_3 and Sum3_1(1)) or ((not C2_3) and Sum3_0(1));
-	SUM(7) <= (C2_3 and Sum3_1(0)) or ((not C2_3) and Sum3_0(0));
+	M6 : mux port map (Sum3_0(3),Sum3_1(3),C2_3,SUM(10));
+	M7 : mux port map (Sum3_0(2),Sum3_1(2),C2_3,SUM(9));
+	M8 : mux port map (Sum3_0(1),Sum3_1(1),C2_3,SUM(8));
+	M9 : mux port map (Sum3_0(0),Sum3_1(0),C2_3,SUM(7));
+	
+	M10 : mux port map (C3_0,C3_1,C2_3,Cout);
 	
 
-
-	Cout <= (C2_3 and C3_1) or ((not C2_3) and C3_0);
 end CarrySelectAdder_arc;
